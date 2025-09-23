@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Profile</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="card">
+        <h2>Welcome, <%= user.name %>!</h2>
+        <p>Login Time: <%= user.loginTime.toLocaleString() %></p>
+        <a href="/logout">Logout</a>
+    </div>
+</body>
+</html>

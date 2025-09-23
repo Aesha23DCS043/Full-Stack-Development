@@ -1,0 +1,88 @@
+/* General body style */
+body {
+    font-family: 'Arial', sans-serif;
+    position: relative;
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Background image with blur effect */
+body::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: url("li.jpg") no-repeat center center fixed;
+    background-size: cover;
+    filter: blur(3px) brightness(0.9); /* blur + slight darkening */
+    z-index: -1; /* keeps it behind everything */
+}
+
+/* Card for login/profile */
+.card {
+    background: rgba(255, 255, 255, 0.7); /* transparent white */
+    padding: 40px 50px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 350px;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect – card pops up */
+.card:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+}
+
+/* Headings */
+h2 {
+    margin-bottom: 30px;
+    color: #333;
+}
+
+/* Input fields */
+input[type="text"] {
+    width: 90%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+
+
+/* Buttons */
+button, a {
+    display: inline-block;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    background-color: #007BFF;
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Button hover (no popup, just color + glow) */
+button:hover, a:hover {
+    background-color: #0056b3;
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+}
+
+
+/* Profile paragraph */
+p {
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: #333;
+}
