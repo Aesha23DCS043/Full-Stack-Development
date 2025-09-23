@@ -1,0 +1,119 @@
+
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Gym Reps Counter</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    body {
+      font-family: cursive, sans-serif;
+      /* background: linear-gradient(to right, #a8edea, #fed6e3); */
+      background: radial-gradient(circle, #bbe7e5,#edc4e1, #a6c1ee);
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .counter-container {
+      background: linear-gradient(to top left, #fbc2eb, #a6c1ee);
+
+
+      padding: 50px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      max-width: 350px;
+      width: 100%;
+    }
+
+    h1 {
+      margin: 0 0 20px;
+    }
+
+    .counter {
+      font-size: 60px;
+      margin: 30px 0;
+      color: #333;
+    }
+
+    .btn-group {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    button {
+      flex: 1;
+      padding: 15px;
+      font-size: 20px;
+      border: none;
+      border-radius: 8px;
+      background-color: #228ecc;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #b1cad3;
+    }
+
+    .reset-btn {
+      background-color: #68b274;
+      margin-top: 20px;
+    }
+
+    .reset-btn:hover {
+      background-color: #6d896c;
+    }
+  </style>
+</head>
+<body>
+  <div class="counter-container">
+    <h1>🏋️ Gym Reps Counter</h1>
+    <div class="counter" id="count">0</div>
+    <div class="btn-group">
+      <button onclick="changeCount(-1)">➖</button>
+      <button onclick="changeCount(1)">➕</button>
+    </div>
+    <button class="reset-btn" onclick="resetCount()">🔄 Reset</button>
+  </div>
+
+  <script>
+    const countElement = document.getElementById('count');
+
+    function loadCount() {
+      const stored = localStorage.getItem('gymCount');
+      return stored ? parseInt(stored) : 0;
+    }
+
+    function saveCount(value) {
+      localStorage.setItem('gymCount', value);
+    }
+
+    function updateDisplay() {
+      const count = loadCount();
+      countElement.textContent = count;
+    }
+
+    function changeCount(delta) {
+      let count = loadCount();
+      count = Math.max(0, count + delta); // Prevent negative
+      saveCount(count);
+      updateDisplay();
+    }
+
+    function resetCount() {
+      saveCount(0);
+      updateDisplay();
+    }
+
+    // On load
+    updateDisplay();
+  </script>
+</body>
+</html>
