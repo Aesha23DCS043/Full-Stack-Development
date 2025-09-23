@@ -1,0 +1,77 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+body {
+  min-height: 100vh;
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
+  position: relative;
+  font-family: cursive, sans-serif;
+  font-size: 10px;
+}
+
+/* Blurred background image */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: -1;
+  background: url('D:/SEM-5/FSD/cu2.webp') no-repeat center center fixed;
+  background-size: cover;
+  filter: blur(3px); /* Adjust blur strength here */
+  opacity: 1;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  /* Remove or comment out the background color for full transparency */
+  /* background: rgba(255,255,255,0.85); */
+  background: transparent;
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  max-width: 500px;
+  margin: auto;
+  padding: 40px 32px;
+}
+
+h1 {
+  font-size: 38px;
+  color: #f8f1b9;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-top: 10px;
+  color: #f8f1b9;
+}
+
