@@ -1,0 +1,78 @@
+.home-page {
+  padding: 40px 20px;
+  background-color: #f9f9f9;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.home-heading {
+  background-color: #ff5400;
+  color: white;
+  padding: 15px 30px;
+  border-radius: 12px;
+  font-size: 28px;
+  font-weight: bold;
+  text-align: center;
+  width: fit-content;
+  margin: 0 auto 40px;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.card {
+  width: 300px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card-image {
+  position: relative;
+  height: 180px;
+  overflow: hidden;
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-icon {
+  position: absolute;
+  bottom: -20px;
+  right: 20px;
+  background-color: #ff5400;
+  color: white;
+  font-size: 22px;
+  padding: 12px;
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.card-content {
+  padding: 20px;
+}
+
+.card-content h3 {
+  margin: 0 0 10px;
+  font-size: 20px;
+  color: #004aad;
+}
+
+.card-content p {
+  margin: 0;
+  color: #555;
+  font-size: 15px;
+  line-height: 1.5;
+}

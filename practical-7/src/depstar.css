@@ -1,0 +1,57 @@
+.depstar-page {
+  background: linear-gradient(to right, #eef2f3, #ffffff);
+  min-height: 100vh;
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.depstar-card {
+  background-color: #ffffff;
+  padding: 30px 40px;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 800px;
+}
+
+.depstar-heading {
+  font-size: 28px;
+  color: #2c3e50;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.depstar-programs {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.depstar-program {
+  background-color: #f9f9fc;
+  border-left: 6px solid #4a90e2;
+  padding: 15px 20px;
+  border-radius: 10px;
+  transition: transform 0.2s ease;
+}
+
+.depstar-program:hover {
+  transform: translateY(-2px);
+  background-color: #f0f8ff;
+}
+
+.depstar-program-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.depstar-program-desc {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.5;
+}
