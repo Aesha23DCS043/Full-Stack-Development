@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Enter Income</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>💰 Income Calculator</h1>
+
+    <% if (error) { %>
+      <div class="error"><%= error %></div>
+    <% } %>
+
+    <form action="/calculate" method="POST">
+      <input type="number" name="income1" placeholder="Income Source 1" value="<%= values.income1 %>" required>
+      <input type="number" name="income2" placeholder="Income Source 2" value="<%= values.income2 %>" required>
+      <button type="submit">Calculate Total</button>
+    </form>
+
+    <a href="/history" class="button-link">📜 View History</a>
+  </div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Income History</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>📊 Income History</h1>
+
+    <% if (records.length === 0) { %>
+      <p>No records found.</p>
+    <% } else { %>
+      <table>
+        <tr>
+          <th>Date</th>
+          <th>Income 1</th>
+          <th>Income 2</th>
+          <th>Total</th>
+        </tr>
+        <% records.forEach(record => { %>
+          <tr>
+            <td><%= record.date %></td>
+            <td>₹<%= record.income1 %></td>
+            <td>₹<%= record.income2 %></td>
+            <td><strong>₹<%= record.total %></strong></td>
+          </tr>
+        <% }) %>
+      </table>
+    <% } %>
+
+    <a href="/" class="button-link">⬅️ Back to Form</a>
+  </div>
+</body>
+</html>
