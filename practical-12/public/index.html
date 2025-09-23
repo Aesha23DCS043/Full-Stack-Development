@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fun Kids Calculator</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: "Comic Sans MS", "Poppins", sans-serif;
+      background: linear-gradient(135deg, #f0b5db, #f8baa6, #a1c4fd, #d0f6c3);
+      background-size: 400% 400%;
+      animation: gradientBG 7s ease infinite;
+    }
+
+    @keyframes gradientBG {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    .calculator {
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 25px;
+      padding: 35px;
+      width: 340px;
+      text-align: center;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      animation: pop 0.8s ease;
+    }
+
+    @keyframes pop {
+      from { transform: scale(0.7); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #444;
+      text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.6);
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      font-size: 1rem;
+      border: none;
+      border-radius: 15px;
+      outline: none;
+      background: rgba(255, 255, 255, 0.8);
+      color: #333;
+      font-weight: bold;
+      box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
+    }
+
+    input::placeholder {
+      color: #777;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 15px;
+    }
+
+    .buttons button {
+      flex: 1;
+      margin: 5px;
+      padding: 12px;
+      font-size: 1.3rem;
+      border: none;
+      border-radius: 15px;
+      cursor: pointer;
+      font-weight: bold;
+      color: white;
+      transition: 0.3s ease;
+    }
+
+    /* Button colors */
+    .buttons button.add { background: linear-gradient(90deg, #42e695, #3bb2b8); }
+    .buttons button.sub { background: linear-gradient(90deg, #f7971e, #ffd200); color: #333; }
+    .buttons button.mul { background: linear-gradient(90deg, #ff6a00, #ee0979); }
+    .buttons button.div { background: linear-gradient(90deg, #36d1dc, #5b86e5); }
+
+    /* Glow effect on hover */
+    .buttons button.add:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 15px #42e695, 0 0 25px #3bb2b8;
+    }
+    .buttons button.sub:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 15px #ffd200, 0 0 25px #f7971e;
+    }
+    .buttons button.mul:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 15px #ff6a00, 0 0 25px #ee0979;
+    }
+    .buttons button.div:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 15px #36d1dc, 0 0 25px #5b86e5;
+    }
+
+    #result {
+      margin-top: 15px;
+      padding: 15px;
+      border-radius: 15px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      background: rgba(255, 255, 255, 0.8);
+      color: #333;
+      box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
+      transition: all 0.3s ease;
+    }
+
+    .bad {
+      background: rgba(255, 100, 100, 0.3);
+      color: #b20000;
+    }
+  </style>
+</head>
+<body>
+  <div class="calculator">
+    <h1>🌈 Fun Calculator</h1>
+    <form id="calcForm">
+      <input id="a" name="a" type="number" placeholder="Enter first number" required />
+      <input id="b" name="b" type="number" placeholder="Enter second number" required />
+
+      <div class="buttons">
+        <button type="button" class="add" onclick="calculate('add')">➕</button>
+        <button type="button" class="sub" onclick="calculate('sub')">➖</button>
+        <button type="button" class="mul" onclick="calculate('mul')">✖️</button>
+        <button type="button" class="div" onclick="calculate('div')">➗</button>
+      </div>
+    </form>
+    <div id="result">✨ Result will appear here!</div>
+  </div>
+
+  <script>
+    async function calculate(op) {
+      const a = document.getElementById('a').value.trim();
+      const b = document.getElementById('b').value.trim();
+      const resultBox = document.getElementById('result');
+
+      if (a === '' || b === '' || isNaN(Number(a)) || isNaN(Number(b))) {
+        resultBox.textContent = '❌ Please enter valid numbers.';
+        resultBox.classList.add("bad");
+        return;
+      }
+
+      try {
+        const res = await fetch('/calculate', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ a, b, op })
+        });
+
+        const data = await res.json();
+
+        if (!res.ok || !data.ok) {
+          resultBox.textContent = data.error || 'Something went wrong.';
+          resultBox.classList.add("bad");
+          return;
+        }
+
+        resultBox.textContent = `Result: ${data.result}`;
+        resultBox.classList.remove("bad");
+      } catch (err) {
+        resultBox.textContent = '🌐 Network error. Try again.';
+        resultBox.classList.add("bad");
+      }
+    }
+  </script>
+</body>
+</html>
+
