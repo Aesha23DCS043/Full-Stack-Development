@@ -1,0 +1,129 @@
+/* public/style.css */
+body {
+  font-family: 'Poppins', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: linear-gradient(135deg, #f5f5dc 0%, #f1e0c6 50%, #e6d3b3 100%);
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  color: #3e2c1c;
+}
+
+/* Glass effect card */
+.card {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  border-radius: 18px;
+  border: 1px solid rgba(120, 72, 0, 0.1);
+  max-width: 500px;
+  width: 100%;
+  padding: 32px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(62, 44, 28, 0.15);
+}
+
+h1 {
+  margin-bottom: 10px;
+  font-size: 22px;
+  font-weight: 700;
+  color: #4a3728;
+}
+
+.muted {
+  color: #7c6f62;
+  margin-bottom: 18px;
+}
+
+/* File Upload */
+.file-label {
+  display: block;
+  margin: 14px 0;
+  padding: 16px;
+  border-radius: 14px;
+  border: 2px dashed #b08968;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+  color: #4a3728;
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.6);
+}
+.file-label input {
+  display: none;
+  pointer-events: none;
+}
+.file-label:hover {
+  background: #e9dcc8;
+  transform: scale(1.02);
+}
+
+/* File name inside box */
+#fileName {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #6b4f35;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  width: 100%;
+  padding: 14px 18px;
+  margin-top: 12px;
+  background: linear-gradient(90deg, #a47148, #b08968, #d2b48c);
+  background-size: 200% auto;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: background-position 0.3s, transform 0.2s;
+}
+.btn:hover {
+  background-position: right center;
+  transform: translateY(-2px);
+}
+.btn.secondary {
+  background: rgba(160, 120, 80, 0.2);
+  color: #3e2c1c;
+  margin-top: 10px;
+}
+
+/* Alerts */
+.alert {
+  padding: 12px 14px;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  text-align: left;
+  font-size: 14px;
+}
+.alert-error {
+  background: #fbeaea;
+  color: #9b1c1c;
+  border: 1px solid #e7aaaa;
+}
+.alert-success {
+  background: #f3f9ec;
+  color: #3c5e27;
+  border: 1px solid #b7d7a8;
+}
+
+.foot {
+  margin-top: 16px;
+  font-size: 13px;
+  color: #5a4633;
+  opacity: 0.9;
+}
+
+#resume {
+  display: none; /* hide the real input */
+}
+
+#fileName {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #6b4f35;
+  text-align: center;
+}

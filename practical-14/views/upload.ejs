@@ -1,0 +1,107 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Upload Resume</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="card">
+    <h1>Upload Your Resume</h1>
+    <p class="muted">Only PDF files up to 2MB are allowed</p>
+
+    <% if (error) { %>
+      <div class="alert alert-error"><%= error %></div>
+    <% } %>
+    <% if (success) { %>
+      <div class="alert alert-success"><%= success %></div>
+    <% } %>
+
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+      <label class="file-label">
+        <input type="file" name="resume" id="resume" accept="application/pdf">
+        Click to Choose PDF
+        <div id="fileName">No file selected</div>
+      </label>
+        <button type="submit" class="btn">Upload Resume</button>
+    </form>
+    
+
+
+    <div class="foot">Job Portal © 2025</div>
+  </div>
+
+  <script>
+  const input = document.getElementById("resume");
+  const fileName = document.getElementById("fileName");
+
+  input.addEventListener("change", () => {
+    if (input.files && input.files.length > 0) {
+      fileName.textContent = input.files[0].name; // show chosen file
+    } else {
+      fileName.textContent = "No file selected";
+    }
+  });
+</script>
+
+
+</body>
+</html>
+
+ -->
+
+
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Upload Resume</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="card">
+    <h1>Upload Your Resume</h1>
+    <p class="muted">Only PDF files up to 2MB are allowed</p>
+
+    <% if (error) { %>
+      <div class="alert alert-error"><%= error %></div>
+    <% } %>
+    <% if (success) { %>
+      <div class="alert alert-success"><%= success %></div>
+    <% } %>
+
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+  <!-- File Upload Box -->
+  <label class="file-label">
+    Click to Choose PDF
+    <input type="file" name="resume" id="resume" accept="application/pdf">
+    <div id="fileName">No file selected</div>
+  </label>
+
+  <button type="submit" class="btn">Upload Resume</button>
+</form>
+
+
+    <div class="foot">Job Portal © 2025</div>
+  </div>
+
+  <script>
+  const input = document.getElementById("resume");
+  const fileName = document.getElementById("fileName");
+  const fileLabel = document.getElementById("fileLabel");
+
+  // Trigger file selection when clicking the label
+  fileLabel.addEventListener("click", () => input.click());
+
+  // Update the file name when a file is selected
+  input.addEventListener("change", () => {
+    if (input.files && input.files.length > 0) {
+      fileName.textContent = input.files[0].name; // shows immediately
+    } else {
+      fileName.textContent = "No file selected";
+    }
+  });
+</script>
+
+</body>
+</html>

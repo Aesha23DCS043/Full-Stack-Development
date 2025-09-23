@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Upload Success</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="card">
+    <h1>Upload Successful ✅</h1>
+
+    <p><strong>Original file:</strong> <%= file.originalName %></p>
+    <p><strong>Saved filename:</strong> <%= file.savedName %></p>
+    <p><strong>Size:</strong> <%= file.sizeReadable %></p>
+    <p><strong>Uploaded at:</strong> <%= file.uploadTime %></p>
+
+    <a class="btn" href="/download/<%= file.savedName %>">Download</a>
+    <a class="btn secondary" href="/">Upload another</a>
+  </div>
+</body>
+</html>
