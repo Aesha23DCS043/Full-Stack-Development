@@ -1,0 +1,124 @@
+/* === Global Styles === */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #f9f9f9, #e0e7ff);
+  margin: 0;
+  padding: 30px;
+  color: #333;
+}
+
+/* === Headings === */
+h1 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 35px;
+  color: #1e293b;
+  letter-spacing: 1px;
+}
+
+/* === Add Button === */
+.add-btn {
+  display: inline-block;
+  margin-bottom: 25px;
+  padding: 12px 22px;
+  background: linear-gradient(135deg, #4caf50, #81c784);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 15px rgba(76, 175, 80, 0.3);
+}
+
+.add-btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 25px rgba(76, 175, 80, 0.4);
+}
+
+/* === Student Grid Container === */
+.student-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+/* === Individual Student Card === */
+.student-card {
+  background: #fff;
+  padding: 25px 20px;
+  border-radius: 18px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  position: relative;
+}
+
+.student-card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.student-card h3 {
+  margin: 0 0 12px 0;
+  font-size: 1.4rem;
+  color: #1e293b;
+}
+
+.student-card p {
+  margin: 6px 0;
+  color: #555;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* === Action Buttons inside Card === */
+.student-card .btn {
+  width: 48%;
+  margin-top: 12px;
+  font-size: 0.95rem;
+  border-radius: 10px;
+  padding: 8px 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.btn-edit {
+  background: linear-gradient(135deg, #fdd835, #fbc02d);
+  color: #1e293b;
+}
+
+.btn-edit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(251, 192, 45, 0.3);
+}
+
+.btn-delete {
+  background: linear-gradient(135deg, #e57373, #f44336);
+  color: #fff;
+}
+
+.btn-delete:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(244, 67, 54, 0.3);
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+  .student-card {
+    width: 100%;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  .add-btn {
+    width: 100%;
+    text-align: center;
+  }
+}
