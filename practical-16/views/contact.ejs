@@ -1,0 +1,559 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Me</title>
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: #f7f9fc;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+
+      .container {
+        background-color: #ffffff;
+        border: 1px solid #e0e0e0;
+        border-radius: 12px;
+        padding: 35px;
+        width: 400px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        text-align: center;
+      }
+
+      h1 {
+        color: #333;
+        margin-bottom: 25px;
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 14px;
+        transition: all 0.2s ease;
+      }
+
+      input:focus,
+      textarea:focus {
+        border-color: #80bdff;
+        outline: none;
+        box-shadow: 0 0 4px rgba(0, 123, 255, 0.3);
+      }
+
+      button {
+        width: 100%;
+        padding: 10px;
+        background-color: #5cb85c;
+        border: none;
+        color: white;
+        font-size: 16px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      button:hover {
+        background-color: #4cae4c;
+      }
+
+      .message {
+        display: none;
+        margin-top: 10px;
+        padding: 10px;
+        border-radius: 6px;
+        font-size: 15px;
+      }
+
+      .success {
+        background-color: #e8f9ee;
+        color: #28a745;
+      }
+
+      .error {
+        background-color: #fdeaea;
+        color: #d9534f;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>📩 Contact Me</h1>
+      <form id="contactForm">
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+      <p id="responseMessage" class="message"></p>
+    </div>
+
+    <script>
+      const form = document.getElementById("contactForm");
+      const responseMessage = document.getElementById("responseMessage");
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData.entries());
+
+        try {
+          const res = await fetch("/contact", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data),
+          });
+
+          const result = await res.json();
+
+          if (result.status === "success") {
+            responseMessage.textContent = `✅ Thank you, ${result.name}! Your message was sent successfully.`;
+            responseMessage.className = "message success";
+            responseMessage.style.display = "block";
+            form.reset();
+          } else {
+            responseMessage.textContent = "❌ Error sending message. Please try again.";
+            responseMessage.className = "message error";
+            responseMessage.style.display = "block";
+          }
+        } catch (err) {
+          responseMessage.textContent = "⚠️ Something went wrong. Please try again later.";
+          responseMessage.className = "message error";
+          responseMessage.style.display = "block";
+        }
+      });
+    </script>
+  </body>
+</html> -->
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Me</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(135deg, #f6f8fc, #e8effd);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+
+      .contact-card {
+        background: #ffffff;
+        padding: 40px 35px;
+        border-radius: 20px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        width: 400px;
+        text-align: center;
+        transition: all 0.3s ease;
+      }
+
+      .contact-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+      }
+
+      h1 {
+        margin-bottom: 25px;
+        color: #2c3e50;
+        font-weight: 600;
+        font-size: 26px;
+      }
+
+      .input-group {
+        margin-bottom: 15px;
+        text-align: left;
+      }
+
+      .input-group label {
+        display: block;
+        font-size: 14px;
+        margin-bottom: 6px;
+        color: #555;
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccd1e4;
+        border-radius: 10px;
+        font-size: 14px;
+        outline: none;
+        transition: 0.3s;
+        background-color: #f9fbff;
+      }
+
+      input:focus,
+      textarea:focus {
+        border-color: #6c63ff;
+        box-shadow: 0 0 5px rgba(108, 99, 255, 0.4);
+        background-color: #ffffff;
+      }
+
+      button {
+        width: 100%;
+        padding: 12px;
+        border: none;
+        border-radius: 10px;
+        background: linear-gradient(135deg, #6c63ff, #4e54c8);
+        color: white;
+        font-size: 16px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      button:hover {
+        background: linear-gradient(135deg, #5a52e0, #3b3fd1);
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(108, 99, 255, 0.3);
+      }
+
+      /* Success & Error Messages */
+      .message {
+        display: none;
+        margin-top: 15px;
+        padding: 12px;
+        border-radius: 10px;
+        font-size: 15px;
+        animation: fadeIn 0.6s ease forwards;
+      }
+
+      .success {
+        background-color: #e9f9ef;
+        color: #2e7d32;
+        border-left: 4px solid #43a047;
+      }
+
+      .error {
+        background-color: #fdecea;
+        color: #c62828;
+        border-left: 4px solid #f44336;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Animation for button click feedback */
+      button:active {
+        transform: scale(0.98);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="contact-card">
+      <h1>📩 Contact Me</h1>
+      <form id="contactForm">
+        <div class="input-group">
+          <label for="name">Your Name</label>
+          <input type="text" name="name" id="name" placeholder="Enter your name" required />
+        </div>
+        <div class="input-group">
+          <label for="email">Your Email</label>
+          <input type="email" name="email" id="email" placeholder="Enter your email" required />
+        </div>
+        <div class="input-group">
+          <label for="message">Your Message</label>
+          <textarea name="message" id="message" rows="5" placeholder="Write your message..." required></textarea>
+        </div>
+        <button type="submit">Send Message 🚀</button>
+      </form>
+
+      <p id="responseMessage" class="message"></p>
+    </div>
+
+    <script>
+      const form = document.getElementById("contactForm");
+      const responseMessage = document.getElementById("responseMessage");
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData.entries());
+
+        try {
+          const res = await fetch("/contact", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data),
+          });
+
+          const result = await res.json();
+
+          if (result.status === "success") {
+            responseMessage.textContent = `✅ Thank you, ${result.name}! Your message has been sent successfully.`;
+            responseMessage.className = "message success";
+            responseMessage.style.display = "block";
+            form.reset();
+          } else {
+            responseMessage.textContent = "❌ Oops! Something went wrong. Try again.";
+            responseMessage.className = "message error";
+            responseMessage.style.display = "block";
+          }
+        } catch (err) {
+          responseMessage.textContent = "⚠️ Network error. Please try again later.";
+          responseMessage.className = "message error";
+          responseMessage.style.display = "block";
+        }
+      });
+    </script>
+  </body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Contact Me</title>
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+      /* Make box sizing predictable so padding doesn't cause overflow */
+      *, *::before, *::after {
+        box-sizing: border-box;
+      }
+
+      html, body {
+        height: 100%;
+        margin: 0;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(135deg, #f7faff, #eef4ff);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+      }
+
+      /* Card */
+      .contact-card {
+        width: 100%;
+        max-width: 560px;        /* card width limit */
+        background: #fff;
+        border-radius: 16px;
+        padding: 36px;
+        box-shadow: 0 12px 30px rgba(32, 41, 61, 0.08);
+      }
+
+      /* Title area centered */
+      .title {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .title h1 {
+        margin: 0;
+        font-size: 26px;
+        color: #233044;
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      /* Inner form wrapper - centers fields inside the card */
+      .form-inner {
+        max-width: 440px;   /* ensures the form fields sit centered inside the card */
+        margin: 0 auto;     /* center within .contact-card */
+      }
+
+      .input-group {
+        margin-bottom: 16px;
+        text-align: left;    /* labels aligned left */
+      }
+
+      .input-group label {
+        display: block;
+        font-size: 13px;
+        color: #567;
+        margin-bottom: 8px;
+        font-weight: 500;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      textarea {
+        width: 100%;
+        display: block;
+        padding: 12px 14px;
+        border-radius: 10px;
+        border: 1px solid #d7dfea;
+        background: #fbfdff;
+        font-size: 14px;
+        color: #1f2b3a;
+        outline: none;
+        transition: box-shadow .18s ease, border-color .18s ease;
+        text-align: left; /* prevents right-aligned placeholders/text */
+      }
+
+      input::placeholder,
+      textarea::placeholder {
+        color: #aab6cc;
+      }
+
+      input:focus,
+      textarea:focus {
+        border-color: #6c63ff;
+        box-shadow: 0 6px 18px rgba(108, 99, 255, 0.12);
+        background: #fff;
+      }
+
+      textarea {
+        min-height: 140px;
+        resize: vertical;
+        line-height: 1.45;
+      }
+
+      /* Button */
+      .btn-send {
+        width: 100%;
+        padding: 12px;
+        border-radius: 10px;
+        border: none;
+        font-size: 16px;
+        font-weight: 600;
+        color: #fff;
+        cursor: pointer;
+        background: linear-gradient(135deg,#6c63ff,#4e54c8);
+        box-shadow: 0 8px 20px rgba(78,84,200,0.18);
+        transition: transform .15s ease, box-shadow .15s ease;
+      }
+
+      .btn-send:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 30px rgba(78,84,200,0.22);
+      }
+
+      /* Response message */
+      .message {
+        display: none;
+        margin-top: 18px;
+        padding: 12px 14px;
+        border-radius: 10px;
+        font-size: 15px;
+        animation: fadeIn .45s ease forwards;
+      }
+      .message.success {
+        background: #e9f9ef;
+        color: #166a3b;
+        border-left: 4px solid #43a047;
+      }
+      .message.error {
+        background: #fdecea;
+        color: #b91c1c;
+        border-left: 4px solid #f44336;
+      }
+
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-8px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+
+      /* Responsive tweaks */
+      @media (max-width: 520px) {
+        .contact-card { padding: 28px 18px; border-radius: 12px; }
+        .form-inner { max-width: 100%; }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="contact-card" role="region" aria-label="Contact form">
+      <div class="title">
+        <h1>📩 Contact Me</h1>
+      </div>
+
+      <div class="form-inner">
+        <form id="contactForm" autocomplete="on">
+          <div class="input-group">
+            <label for="name">Your Name</label>
+            <input id="name" name="name" type="text" placeholder="Enter your name" required />
+          </div>
+
+          <div class="input-group">
+            <label for="email">Your Email</label>
+            <input id="email" name="email" type="email" placeholder="Enter your email" required />
+          </div>
+
+          <div class="input-group">
+            <label for="message">Your Message</label>
+            <textarea id="message" name="message" placeholder="Write your message..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn-send">Send Message 🚀</button>
+        </form>
+
+        <div id="responseMessage" class="message" role="status" aria-live="polite"></div>
+      </div>
+    </div>
+
+    <script>
+      /* AJAX submit (keeps previous behavior you had) */
+      const form = document.getElementById('contactForm');
+      const responseMessage = document.getElementById('responseMessage');
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        responseMessage.style.display = 'none';
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData.entries());
+
+        try {
+          const res = await fetch('/contact', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+          });
+
+          const result = await res.json();
+
+          if (result.status === 'success') {
+            responseMessage.textContent = `✅ Thank you, ${result.name}! Your message was sent successfully.`;
+            responseMessage.className = 'message success';
+            responseMessage.style.display = 'block';
+            form.reset();
+          } else {
+            responseMessage.textContent = result.message || '❌ Error sending message. Please try again.';
+            responseMessage.className = 'message error';
+            responseMessage.style.display = 'block';
+          }
+        } catch (err) {
+          responseMessage.textContent = '⚠️ Network error. Please try again later.';
+          responseMessage.className = 'message error';
+          responseMessage.style.display = 'block';
+        }
+      });
+    </script>
+  </body>
+</html>

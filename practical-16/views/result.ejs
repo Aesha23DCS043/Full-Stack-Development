@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Message Status</title>
+  </head>
+  <body
+    style="font-family: Arial; text-align: center; margin-top: 100px;"
+  >
+    <% if (status === "success") { %>
+      <h2>✅ Thank you, <%= name %>! Your message was sent successfully.</h2>
+    <% } else { %>
+      <h2>❌ Sorry, there was a problem sending your message.</h2>
+    <% } %>
+    <a href="/contact">Go Back</a>
+  </body>
+</html>
