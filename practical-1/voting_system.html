@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Favorite Language Poll</title>
+    <link rel="stylesheet" href="practical1.css">
+</head>
+
+<body>
+    <div class="poll-container">
+        <h1>Vote for Your Favorite Language</h1>
+        <div class="buttons">
+            <button onclick="vote('JavaScript')">JavaScript</button>
+            <button onclick="vote('Python')">Python</button>
+            <button onclick="vote('Java')">Java</button>
+        </div>
+        <div class="results">
+            <div>JavaScript: <span id="js-count">0</span></div>
+            <div>Python: <span id="py-count">0</span></div>
+            <div>Java: <span id="java-count">0</span></div>
+        </div>
+    </div>
+
+    <script src="practical1.js"></script>
+</body>
+
+</html>
