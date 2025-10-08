@@ -1,0 +1,52 @@
+:root{
+  --bg:#f6f9ff; /* soft blue background */
+  --accent:#3b82f6; /* blue */
+  --accent-2:#22c55e; /* green accent */
+  --muted:#5b6b7b;
+  --card:#ffffff;
+  --shadow:0 10px 24px rgba(59,130,246,0.15);
+  --text:#0f172a;
+  --border:#e5e7eb;
+}
+
+/* dark theme variables */
+[data-theme="dark"]{
+  --bg:#0b1220; /* near-navy */
+  --card:#0f172a; /* slate-900 */
+  --text:#e5e7eb; /* slate-200 */
+  --muted:#9aa6b2; /* slate-400 */
+  --shadow:0 10px 24px rgba(0,0,0,0.45);
+  --border:#1f2937; /* slate-800 */
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0; font-family:Inter, system-ui, Arial, sans-serif; background:var(--bg);
+  color:var(--text);
+}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem;background:linear-gradient(90deg,var(--accent),#60a5fa);box-shadow:var(--shadow);color:#fff}
+.brand{font-weight:700;font-size:1.25rem}
+.links a{margin-left:1rem;text-decoration:none;color:#eaf2ff;font-weight:600;transition:opacity .2s ease, transform .2s ease}
+.links a:hover{opacity:.9;transform:translateY(-1px)}
+.links a.active{color:#fff;border-bottom:2px solid #fff}
+
+.container{padding:2rem;max-width:1100px;margin:0 auto}
+.card-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.card{background:var(--card);padding:1rem;border-radius:14px;box-shadow:var(--shadow);transition:transform .2s ease, box-shadow .2s ease}
+.card:hover{transform:translateY(-2px);box-shadow:0 16px 32px rgba(59,130,246,0.20)}
+.form{display:flex;flex-direction:column;gap:.5rem}
+.form input{padding:.6rem;border-radius:8px;border:1px solid var(--border);background:transparent;color:var(--text)}
+.form select{padding:.6rem;border-radius:8px;border:1px solid var(--border);background:transparent;color:var(--text)}
+.form button{padding:.6rem;border-radius:10px;border:none;background:var(--accent);color:#fff;font-weight:700;box-shadow:var(--shadow);transition:transform .2s ease}
+.form button:hover{transform:translateY(-1px)}
+.list{list-style:none;padding:0;margin:0}
+.list-item{display:flex;justify-content:space-between;padding:.6rem 0;border-bottom:1px dashed var(--border)}
+.empty{color:var(--muted)}
+
+/* simple slide-in animation for navbar */
+@keyframes slideDown{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
+.slide-down{animation:slideDown .4s ease}
+@media (max-width:800px){
+  .card-grid{grid-template-columns:1fr}
+  .nav{padding:0.8rem 1rem}
+}
