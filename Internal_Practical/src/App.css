@@ -1,0 +1,443 @@
+/* Refined design for Register / Login routes */
+
+:root{
+  --bg-1: #0b1220;
+  --bg-2: #0f2740;
+  --accent: #4fb0ff;
+  --accent-2: #2f8fd6;
+  --card: rgba(255,255,255,0.98);
+  --glass: rgba(255,255,255,0.06);
+  --muted: #6b7a90;
+  --text-dark: #071026;
+  --radius: 12px;
+}
+
+*{box-sizing:border-box}
+html,body,#root{height:100%}
+body{
+  margin:0;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  background: radial-gradient(1200px 600px at 10% 10%, rgba(79,176,255,0.08), transparent 12%),
+              linear-gradient(135deg,var(--bg-1) 0%, var(--bg-2) 100%);
+  color:#fff;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  -webkit-touch-callout: none;
+}
+
+/* Top navigation */
+nav{
+  display:flex;
+  gap:14px;
+  justify-content:center;
+  align-items:center;
+  padding:14px 18px;
+  backdrop-filter: blur(8px) saturate(120%);
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  position:sticky;
+  top:0;
+  z-index:50;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+  box-shadow: 0 4px 18px rgba(2,6,23,0.16);
+}
+
+nav a{
+  color: var(--card);
+  text-decoration:none;
+  padding:10px 16px;
+  border-radius:10px;
+  background: transparent;
+  font-weight:700;
+  transition: all .18s ease;
+  letter-spacing: .2px;
+  opacity: .98;
+}
+
+nav a.active,
+nav a:hover{
+  transform: translateY(-3px);
+  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+  box-shadow: 0 8px 24px rgba(11,22,40,0.24);
+  color: var(--accent);
+}
+
+/* Routes container (the div after nav in App.js) */
+nav + div{
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+  padding:56px 20px;
+  min-height: calc(100vh - 72px);
+  gap:20px;
+}
+
+/* Central card where Register / Login components will be rendered */
+.content, .card, .container, .form-card {
+  width:100%;
+  max-width:720px;
+  background: var(--card);
+  color: var(--text-dark);
+  padding:28px;
+  border-radius:var(--radius);
+  box-shadow: 0 12px 40px rgba(2,6,23,0.18);
+  border: 1px solid rgba(11,18,32,0.06);
+  margin: auto;
+}
+
+/* Header inside card */
+.content h1, .form-card h1 {
+  margin: 0 0 8px 0;
+  font-size: 1.6rem;
+  color: #0b1a2b;
+  letter-spacing: .6px;
+}
+.content p.lead {
+  margin:0 0 18px 0;
+  color: var(--muted);
+  font-size: .97rem;
+}
+
+/* Form layout */
+form {
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+/* Row and small helpers */
+.row{
+  display:flex;
+  gap:12px;
+  align-items:center;
+}
+.form-foot{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  margin-top:6px;
+  font-size:.95rem;
+  color:var(--muted);
+}
+
+/* Label and inputs */
+label{
+  font-size:0.95rem;
+  font-weight:700;
+  color: #102032;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea{
+  width:100%;
+  padding:12px 14px;
+  font-size:1rem;
+  border-radius:8px;
+  border:1px solid rgba(16,32,50,0.08);
+  outline:none;
+  transition: box-shadow .18s, border-color .18s, transform .08s;
+  background: #fff;
+  color: #102032;
+  box-shadow: inset 0 -1px 0 rgba(16,32,50,0.02);
+}
+
+input::placeholder{ color: #98a4b6; }
+
+input:focus, textarea:focus{
+  border-color: var(--accent);
+  box-shadow: 0 8px 26px rgba(79,176,255,0.12);
+  transform: translateY(-1px);
+}
+
+/* Buttons */
+button{
+  padding:10px 16px;
+  font-size:1rem;
+  border-radius:8px;
+  border:none;
+  cursor:pointer;
+  background: linear-gradient(180deg, var(--accent), var(--accent-2));
+  color:#fff;
+  font-weight:700;
+  transition: transform .12s ease, box-shadow .12s ease, opacity .12s;
+}
+
+button:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(79,176,255,0.18);
+}
+
+button.secondary{
+  background: transparent;
+  color: var(--text-dark);
+  border: 1px solid rgba(16,32,50,0.08);
+}
+
+/* Small utilities */
+.small{
+  font-size:.9rem;
+  color:var(--muted);
+}
+.helper{
+  font-size:.9rem;
+  color:#7b8796;
+}
+
+/* Form actions row */
+.actions{
+  display:flex;
+  gap:12px;
+  margin-top:8px;
+  justify-content:flex-end;
+  align-items:center;
+}
+
+/* Validation / messages */
+.alert{
+  padding:10px 12px;
+  border-radius:8px;
+  background: #fff6f6;
+  color: #7a1a1a;
+  border: 1px solid rgba(186, 50, 50, 0.12);
+  font-weight:600;
+}
+
+/* Responsive */
+@media (max-width:920px){
+  nav + div{padding:36px 18px}
+  .content{max-width:640px}
+}
+
+@media (max-width:720px){
+  nav{padding:12px}
+  nav a{padding:8px 12px}
+  nav + div{padding:28px 12px; align-items:flex-start}
+  .content{padding:18px; border-radius:10px}
+  .actions{justify-content:stretch; flex-direction:column}
+  .form-foot{flex-direction:column; align-items:flex-start}
+}
+
+/* End of file */
+```/* filepath: d:\SEM-5\FSD\practicalexam\src\App.css */
+/* Refined design for Register / Login routes */
+
+:root{
+  --bg-1: #0b1220;
+  --bg-2: #0f2740;
+  --accent: #4fb0ff;
+  --accent-2: #2f8fd6;
+  --card: rgba(255,255,255,0.98);
+  --glass: rgba(255,255,255,0.06);
+  --muted: #6b7a90;
+  --text-dark: #071026;
+  --radius: 12px;
+}
+
+*{box-sizing:border-box}
+html,body,#root{height:100%}
+body{
+  margin:0;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  background: radial-gradient(1200px 600px at 10% 10%, rgba(79,176,255,0.08), transparent 12%),
+              linear-gradient(135deg,var(--bg-1) 0%, var(--bg-2) 100%);
+  color:#fff;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  -webkit-touch-callout: none;
+}
+
+/* Top navigation */
+nav{
+  display:flex;
+  gap:14px;
+  justify-content:center;
+  align-items:center;
+  padding:14px 18px;
+  backdrop-filter: blur(8px) saturate(120%);
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  position:sticky;
+  top:0;
+  z-index:50;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+  box-shadow: 0 4px 18px rgba(2,6,23,0.16);
+}
+
+nav a{
+  color: var(--card);
+  text-decoration:none;
+  padding:10px 16px;
+  border-radius:10px;
+  background: transparent;
+  font-weight:700;
+  transition: all .18s ease;
+  letter-spacing: .2px;
+  opacity: .98;
+}
+
+nav a.active,
+nav a:hover{
+  transform: translateY(-3px);
+  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+  box-shadow: 0 8px 24px rgba(11,22,40,0.24);
+  color: var(--accent);
+}
+
+/* Routes container (the div after nav in App.js) */
+nav + div{
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+  padding:56px 20px;
+  min-height: calc(100vh - 72px);
+  gap:20px;
+}
+
+/* Central card where Register / Login components will be rendered */
+.content, .card, .container, .form-card {
+  width:100%;
+  max-width:720px;
+  background: var(--card);
+  color: var(--text-dark);
+  padding:28px;
+  border-radius:var(--radius);
+  box-shadow: 0 12px 40px rgba(2,6,23,0.18);
+  border: 1px solid rgba(11,18,32,0.06);
+  margin: auto;
+}
+
+/* Header inside card */
+.content h1, .form-card h1 {
+  margin: 0 0 8px 0;
+  font-size: 1.6rem;
+  color: #0b1a2b;
+  letter-spacing: .6px;
+}
+.content p.lead {
+  margin:0 0 18px 0;
+  color: var(--muted);
+  font-size: .97rem;
+}
+
+/* Form layout */
+form {
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+/* Row and small helpers */
+.row{
+  display:flex;
+  gap:12px;
+  align-items:center;
+}
+.form-foot{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  margin-top:6px;
+  font-size:.95rem;
+  color:var(--muted);
+}
+
+/* Label and inputs */
+label{
+  font-size:0.95rem;
+  font-weight:700;
+  color: #102032;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea{
+  width:100%;
+  padding:12px 14px;
+  font-size:1rem;
+  border-radius:8px;
+  border:1px solid rgba(16,32,50,0.08);
+  outline:none;
+  transition: box-shadow .18s, border-color .18s, transform .08s;
+  background: #fff;
+  color: #102032;
+  box-shadow: inset 0 -1px 0 rgba(16,32,50,0.02);
+}
+
+input::placeholder{ color: #98a4b6; }
+
+input:focus, textarea:focus{
+  border-color: var(--accent);
+  box-shadow: 0 8px 26px rgba(79,176,255,0.12);
+  transform: translateY(-1px);
+}
+
+/* Buttons */
+button{
+  padding:10px 16px;
+  font-size:1rem;
+  border-radius:8px;
+  border:none;
+  cursor:pointer;
+  background: linear-gradient(180deg, var(--accent), var(--accent-2));
+  color:#fff;
+  font-weight:700;
+  transition: transform .12s ease, box-shadow .12s ease, opacity .12s;
+}
+
+button:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(79,176,255,0.18);
+}
+
+button.secondary{
+  background: transparent;
+  color: var(--text-dark);
+  border: 1px solid rgba(16,32,50,0.08);
+}
+
+/* Small utilities */
+.small{
+  font-size:.9rem;
+  color:var(--muted);
+}
+.helper{
+  font-size:.9rem;
+  color:#7b8796;
+}
+
+/* Form actions row */
+.actions{
+  display:flex;
+  gap:12px;
+  margin-top:8px;
+  justify-content:flex-end;
+  align-items:center;
+}
+
+/* Validation / messages */
+.alert{
+  padding:10px 12px;
+  border-radius:8px;
+  background: #fff6f6;
+  color: #7a1a1a;
+  border: 1px solid rgba(186, 50, 50, 0.12);
+  font-weight:600;
+}
+
+/* Responsive */
+@media (max-width:920px){
+  nav + div{padding:36px 18px}
+  .content{max-width:640px}
+}
+
+@media (max-width:720px){
+  nav{padding:12px}
+  nav a{padding:8px 12px}
+  nav + div{padding:28px 12px; align-items:flex-start}
+  .content{padding:18px; border-radius:10px}
+  .actions{justify-content:stretch; flex-direction:column}
+  .form-foot{flex-direction:column; align-items:flex-start}
+}
